@@ -25,7 +25,7 @@ GameController.prototype.allCells = function () {
   var cells = [];
   for (var i = 0; i<this.size[0]; i++) {
     for (var j = 0; j<this.size[1]; j++) {
-      cells.push({cell:this.grid.cell(i, j), x:i, y:j});
+      cells.push({cell:this.grid.cell(i, j), x:j, y:i});
     }
   }
   return cells;

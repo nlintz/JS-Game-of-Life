@@ -1,22 +1,21 @@
-var SIZE = [75, 75]
+var SIZE = [100, 100]
 var renderer = new Renderer();
 var controller = new GameController({size:SIZE});
 var initialStateController = new InitialStateController(SIZE);
 
 window.onload = function () {
-  var initialPositions = initialStateController.acorn();
+  var initialPositions = initialStateController.rPentomino();
   initialPositions.forEach(function (position) {
     controller.cellAlive(position[0], position[1]);
   });
-
-  controller.cellAlive(0,0)
 
   draw(controller.allCells(), renderer)
   window.requestAnimFrame(update.bind(null, controller, renderer));
 }
 
 function step () {
-  update(controller, renderer);
+  controller.step();
+  draw(controller.allCells(), renderer);
 }
 
 function update(controller, renderer) {
